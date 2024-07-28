@@ -1,0 +1,26 @@
+[
+  {
+    "id": "home",
+    "title": "Home",
+    "icon": "faHome",
+    "href": "/"
+  },
+  {
+    "id": "categories",
+    "title": "Categories",
+    "icon": "faListAlt",
+    "href": "/categories"
+  },
+  {
+    "id": "Favourites",
+    "title": "Favourites",
+    "icon": "faHeart",
+    "href": "/favourites"
+  },
+  {
+    "id": "Customer Care",
+    "title": "Customer Care",
+    "icon": "faHeadset",
+    "href": "/customercare"
+  }
+]
