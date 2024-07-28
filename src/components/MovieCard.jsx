@@ -71,6 +71,7 @@ const MovieCard = ({ movie }) => {
                   src={movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : "/assets/images/dummy.png"}
                   alt={movie.title}
                   className="rounded-0"
+                  loading="lazy"
                 />
               </Tilt>
             </div>

@@ -42,6 +42,7 @@ const Movie = ({ movie, theme, loading }) => {
                     src={movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : "/assets/images/dummy.png"}
                     alt={movie.title}
                     className="rounded-0 mx-auto"
+                    loading="lazy"
                   />
                 </div>
                 <div
