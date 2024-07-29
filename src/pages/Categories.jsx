@@ -69,7 +69,7 @@ const Categories = () => {
       >
         Categories
       </h1>
-      <div className="row justify-content-center align-items-center p-3">
+      <div className="row justify-content-center align-items-center p-3 mx-auto">
         {isLoading && (
           <div
             className={`loader w-100 vh-100 d-flex justify-content-center align-items-center bg-${theme}`}

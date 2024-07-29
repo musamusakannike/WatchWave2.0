@@ -10,6 +10,7 @@ import {
   faBell,
   faHeadset,
   faBars,
+  faTimes,
 } from "@fortawesome/free-solid-svg-icons";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "animate.css/animate.min.css";
@@ -57,7 +58,11 @@ const Navbar = () => {
               alt="WatchWave logo"
               style={{ width: "30px", height: "30px" }}
             />
-            <span className={`fs-4 text-${theme === 'light' ? 'dark' : 'light'}`}>WatchWave</span>
+            <span
+              className={`fs-4 text-${theme === "light" ? "dark" : "light"}`}
+            >
+              WatchWave
+            </span>
           </a>
           <hr />
           <ul className="nav nav-pills flex-column mb-auto">
@@ -65,7 +70,9 @@ const Navbar = () => {
               <li className="nav-item my-3" key={link.id}>
                 <Link
                   to={link.href}
-                  className={`nav-link text-${theme === 'light' ? 'dark' : 'light'}`}
+                  className={`nav-link text-${
+                    theme === "light" ? "dark" : "light"
+                  }`}
                   aria-current={link.id === "home" ? "page" : undefined}
                 >
                   <FontAwesomeIcon
@@ -112,7 +119,11 @@ const Navbar = () => {
           />
           <span className="visually-hidden">Icon-only</span>
         </a>
-        <ul className={`nav nav-pills nav-flush flex-column mb-auto text-center text-${theme === 'light' ? 'dark' : 'light'}`}>
+        <ul
+          className={`nav nav-pills nav-flush flex-column mb-auto text-center text-${
+            theme === "light" ? "dark" : "light"
+          }`}
+        >
           {navLinks.map((link) => (
             <li className="nav-item" key={link.id}>
               <Link
@@ -132,7 +143,10 @@ const Navbar = () => {
             </li>
           ))}
           <li className="nav-item">
-            <div className="form-check form-switch text-center d-flex justify-content-center" onClick={toggleTheme}>
+            <div
+              className="form-check form-switch text-center d-flex justify-content-center"
+              onClick={toggleTheme}
+            >
               <input
                 className="form-check-input bg-danger"
                 type="checkbox"
@@ -154,7 +168,11 @@ const Navbar = () => {
         onClick={toggleSidebar}
         style={{ position: "fixed", top: 5, right: 5, zIndex: 99 }}
       >
-        <FontAwesomeIcon icon={faBars} size="lg" />
+        {isSidebarVisible ? (
+          <FontAwesomeIcon icon={faTimes} size="lg" />
+        ) : (
+          <FontAwesomeIcon icon={faBars} size="lg" />
+        )}
       </button>
     </div>
   );

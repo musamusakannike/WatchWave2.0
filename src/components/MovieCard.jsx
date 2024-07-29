@@ -60,6 +60,9 @@ const MovieCard = ({ movie }) => {
               >
                 <FontAwesomeIcon icon={faHeart} />
               </div>
+              <p className="text-warning shadow position-absolute mb-0 me-1" style={{ zIndex: "99", bottom: "0", right: "0"}}>
+                {Math.round(movie.vote_average * 10) / 10}
+              </p>
               <Tilt
                 className="tilt-card"
                 tiltMaxAngleX={25}

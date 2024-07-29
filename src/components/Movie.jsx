@@ -51,6 +51,7 @@ const Movie = ({ movie, theme, loading }) => {
                   }`}
                 >
                   <h1>{movie.title}</h1>
+                  <i><small className={`text-${theme === "light" ? "muted" : "light"}`}>{movie.tagline && movie.tagline}</small></i>
                   <div className="border-1 p-1">
                     <Genres genres={movie.genres} />
                   </div>
@@ -88,7 +89,7 @@ const Movie = ({ movie, theme, loading }) => {
                           href={`https://netnaija.xyz/${convertToSlug(
                             movie.title
                           )}`}
-                          className="btn btn-danger w-100"
+                          className="btn btn-danger w-100 m-1"
                           target="_blank"
                         >
                           DOWNLOAD
@@ -97,7 +98,7 @@ const Movie = ({ movie, theme, loading }) => {
                       {movie.homepage && (<div className="col">
                         <a
                           href={movie.homepage}
-                          className="btn btn-info w-100"
+                          className="btn btn-info w-100 m-1"
                           target="_blank"
                         >
                           MOVIE SITE
@@ -106,7 +107,7 @@ const Movie = ({ movie, theme, loading }) => {
                       {movie.imdb_id && (<div className="col">
                         <a
                           href={`https://www.imdb.com/title/${movie.imdb_id}`}
-                          className="btn btn-warning w-100"
+                          className="btn btn-warning w-100 m-1"
                           target="_blank"
                         >
                           IMDB
