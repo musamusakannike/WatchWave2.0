@@ -13,7 +13,6 @@ const Favourites = () => {
 
   const fetchFavourites = () => {
     const storedFavourites = JSON.parse(localStorage.getItem("favourites"));
-    console.log("Fetched favourites from localStorage:", storedFavourites);
     if (storedFavourites) {
       setFavourites(storedFavourites);
     } else {
@@ -34,12 +33,10 @@ const Favourites = () => {
             throw new Error("Network response was not ok");
           }
           const data = await response.json();
-          console.log("Fetched movie data:", data);
           return data;
         })
       );
       setMovies(moviesData);
-      console.log("Movies set in state:", moviesData);
     } catch (error) {
       console.error("Error fetching the movie: ", error);
       toast.error("An error occurred while fetching the movie data");

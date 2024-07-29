@@ -24,7 +24,6 @@ const MoviePage = () => {
       }
       const data = await response.json();
       setMovie(data);
-      console.log(data)
       setLoading(false);
     } catch (error) {
       console.error("Error fetching the movie: ", error);
