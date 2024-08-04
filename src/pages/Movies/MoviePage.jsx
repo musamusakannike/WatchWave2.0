@@ -1,11 +1,12 @@
-import { useState, useRef, useEffect, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { TMDB_API_KEY } from "../../config.js";
 import { ThemeContext } from "../../ThemeContext.jsx";
 import "react-toastify/dist/ReactToastify.css";
 import "react-step-progress-bar/styles.css";
-import Movie from "../../components//Movies/Movie.jsx";
+import Movie from "../../components/Movies/Movie.jsx";
+import MovieActors from "../../components/Movies/MovieActors.jsx";
 
 const MoviePage = () => {
   const { theme } = useContext(ThemeContext);
@@ -24,7 +25,6 @@ const MoviePage = () => {
       }
       const data = await response.json();
       setMovie(data);
-      // console.log(data)
       setLoading(false);
     } catch (error) {
       console.error("Error fetching the movie: ", error);
@@ -39,8 +39,13 @@ const MoviePage = () => {
   }, [movieId]);
 
   return (
-    <div className="w-100">
-      <Movie movie={movie} theme={theme} loading={loading} error={error} />
+    <div className="w-100 overflow-hidden">
+      <div>
+        <Movie movie={movie} theme={theme} loading={loading} error={error} />
+      </div>
+      <div>
+        <MovieActors movieId={movieId} />
+      </div>
     </div>
   );
 };

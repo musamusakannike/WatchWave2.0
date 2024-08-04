@@ -24,7 +24,7 @@ const SeriePage = () => {
       }
       const data = await response.json();
       setSerie(data);
-      // console.log(data);
+      console.log(data);
       setLoading(false);
     } catch (error) {
       console.error("Error fetching the serie: ", error);

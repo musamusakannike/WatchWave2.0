@@ -38,10 +38,10 @@ const Movie = ({ movie, theme, loading }) => {
               title={movie.title}
             />
             <div
-              className={`card shadow p-1 border-0 justify-content-center bg-${theme}`}
+              className={`card w-100 p-1 border-0 justify-content-center bg-${theme}`}
             >
               <div className="row mx-auto p-2">
-                <div className="col-md-4 text-center">
+                <div className="col-lg-4 text-center">
                   <div className="overflow-hidden">
                     <Tilt
                       className="tilt-card"
@@ -64,7 +64,7 @@ const Movie = ({ movie, theme, loading }) => {
                   </div>
                 </div>
                 <div
-                  className={`col-md-8 p-0 p-md-2 text-${
+                  className={`col-lg-8 p-0 p-md-2 text-${
                     theme === "light" ? "dark" : "light"
                   }`}
                 >

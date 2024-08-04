@@ -97,11 +97,23 @@ const Serie = ({ serie, theme, loading }) => {
                     </div>
                   </div>
                   {serie.next_episode_to_air && (
-                    <p className="text-center">
-                      Next Episode:
-                      {new Date(serie.next_episode_to_air).toLocaleDateString()}
-                    </p>
+                    <div className="d-flex justify-content-center">
+                      <p className="d-inline-block">
+                        Next Episode:
+                        <br />
+                        Title: {serie.next_episode_to_air.name}
+                        <br />
+                        Season {serie.next_episode_to_air.season_number},
+                        Episode {serie.next_episode_to_air.episode_number}
+                        <br />
+                        Air Date:{" "}
+                        {new Date(
+                          serie.next_episode_to_air.air_date
+                        ).toLocaleDateString()}
+                      </p>
+                    </div>
                   )}
+
                   <div>
                     <p className="d-inline-block">
                       Rating: {serie.vote_average}/10

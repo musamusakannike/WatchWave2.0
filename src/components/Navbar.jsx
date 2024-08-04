@@ -23,8 +23,8 @@ const Navbar = () => {
     <div className={`bg-${theme}`}>
       {/* Medium to Large Screen Sidebar */}
       <div
-        className={`d-none d-md-flex flex-column flex-shrink-0 p-3 vh-100 bg-${theme}`}
-        style={{ width: "280px" }}
+        className={`d-none d-lg-flex flex-column flex-shrink-0 p-3 vh-100 bg-${theme}`}
+        style={{ width: "250px" }}
       >
         <div className="position-fixed">
           <a
@@ -71,7 +71,7 @@ const Navbar = () => {
 
       {/* Mobile/Small Screen Sidebar */}
       <div
-        className={`d-md-none animate__animated animate__fast ${
+        className={`d-lg-none animate__animated animate__fast ${
           isSidebarVisible ? "animate__slideInLeft" : "animate__slideOutLeft"
         } flex-column flex-shrink-0 bg-${theme} vh-100`}
         style={{
