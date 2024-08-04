@@ -6,6 +6,7 @@ import Backdrop from "../Backdrop";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDownload, faFilm } from "@fortawesome/free-solid-svg-icons";
 import Tilt from "react-parallax-tilt";
+import { faImdb } from "@fortawesome/free-brands-svg-icons";
 
 const Movie = ({ movie, theme, loading }) => {
   function convertToSlug(str) {
@@ -166,7 +167,7 @@ const Movie = ({ movie, theme, loading }) => {
                             className="btn btn-warning w-100 m-1"
                             target="_blank"
                           >
-                            IMDB
+                            <FontAwesomeIcon icon={faImdb} /> IMDB
                           </a>
                         </div>
                       )}
