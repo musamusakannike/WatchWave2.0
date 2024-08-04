@@ -72,7 +72,7 @@ const SeriesCard = ({ serie }) => {
               >
                 <img
                   src={serie.poster_path ? `https://image.tmdb.org/t/p/w500${serie.poster_path}` : "/assets/images/dummy.png"}
-                  alt={serie.title}
+                  alt={serie.name}
                   className="rounded-0"
                   loading="lazy"
                 />
@@ -87,7 +87,7 @@ const SeriesCard = ({ serie }) => {
                 theme === "light" ? "dark" : "light"
               }`}
             >
-              {serie.title}
+              {serie.name}
             </h4>
           </Link>
         </div>
