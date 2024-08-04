@@ -1,4 +1,4 @@
-[
+const CategoriesList = [
   { "id": "action", "name": "Action", "icon": "faBolt" },
   { "id": "adventure", "name": "Adventure", "icon": "faHiking" },
   { "id": "animation", "name": "Animation", "icon": "faFilm" },
@@ -19,3 +19,5 @@
   { "id": "war", "name": "War", "icon": "faBomb" },
   { "id": "western", "name": "Western", "icon": "faHatCowboy" }
 ]
+
+export default CategoriesList

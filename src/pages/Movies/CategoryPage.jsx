@@ -1,10 +1,10 @@
 import { useState, useRef, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
-import Loader from "../components/Loader";
+import Loader from "../../components/Loader.jsx";
 import { ToastContainer, toast } from "react-toastify";
-import { TMDB_API_KEY } from "../config";
-import { ThemeContext } from "../ThemeContext.jsx";
-import MoviesGrid from "../components/MoviesGrid.jsx";
+import { TMDB_API_KEY } from "../../config.js";
+import { ThemeContext } from "../../ThemeContext.jsx";
+import MoviesGrid from "../../components/Movies/MoviesGrid.jsx";
 import "react-toastify/dist/ReactToastify.css";
 
 const CategoryPage = () => {

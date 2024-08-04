@@ -1,18 +1,17 @@
 import { useEffect, useState, useContext } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Hero from "../components/Hero";
-import MoviesGrid from "../components/MoviesGrid";
-import SearchBar from "../components/SearchBar";
-import { TMDB_API_KEY } from "../config.js";
-import Loader from "../components/Loader.jsx";
-import { ThemeContext } from "../ThemeContext.jsx";
+import Hero from "../../components/Hero.jsx";
+import MoviesGrid from "../../components/Movies/MoviesGrid.jsx";
+import SearchBar from "../../components/Movies/MovieSearchBar.jsx";
+import { TMDB_API_KEY } from "../../config.js";
+import Loader from "../../components/Loader.jsx";
+import { ThemeContext } from "../../ThemeContext.jsx";
 
 const DiscoverPage = () => {
   const { theme } = useContext(ThemeContext);
   const [moviesList, setMoviesList] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
 
   const fetchMovies = async () => {
     try {
@@ -27,7 +26,6 @@ const DiscoverPage = () => {
       setLoading(false);
     } catch (error) {
       console.error("Error fetching the movies: ", error);
-      setError("An error occurred while fetching the movie data");
       toast.error("An error occurred while fetching the movie data");
       setLoading(false);
     }

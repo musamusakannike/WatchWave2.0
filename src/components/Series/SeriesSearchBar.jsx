@@ -1,10 +1,10 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { useState, useContext } from "react";
-import { ThemeContext } from "../ThemeContext.jsx";
+import { ThemeContext } from "../../ThemeContext.jsx";
 import { useNavigate } from "react-router-dom";
 
-const SearchBar = () => {
+const SeriesSearchBar = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
   const { theme } = useContext(ThemeContext);
@@ -12,7 +12,7 @@ const SearchBar = () => {
   const handleSearch = (e) => {
     e.preventDefault();
     if (searchTerm.trim()) {
-      navigate(`/search/${searchTerm}`);
+      navigate(`/series-search/${searchTerm}`);
     }
   };
 
@@ -22,8 +22,8 @@ const SearchBar = () => {
         <input
           type="text"
           className={`form-control border-danger bg-${theme} text-${theme === "light" ? "dark" : "light"}`}
-          placeholder="Search by Movie Name"
-          aria-label="Search by Movie Name"
+          placeholder="Search by Series Name"
+          aria-label="Search by Series Name"
           aria-describedby="basic-addon2"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
@@ -43,4 +43,4 @@ const SearchBar = () => {
   );
 };
 
-export default SearchBar;
+export default SeriesSearchBar;

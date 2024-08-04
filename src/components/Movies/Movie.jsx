@@ -1,8 +1,10 @@
-import Genres from "./Genres";
-import Loader from "./Loader";
+import Genres from "../Genres";
+import Loader from "../Loader";
 import { ProgressBar } from "react-step-progress-bar";
 import { ToastContainer } from "react-toastify";
-import Backdrop from "./Backdrop";
+import Backdrop from "../Backdrop";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDownload, faFilm } from "@fortawesome/free-solid-svg-icons";
 
 const Movie = ({ movie, theme, loading }) => {
   function convertToSlug(str) {
@@ -56,6 +58,7 @@ const Movie = ({ movie, theme, loading }) => {
                     <Genres genres={movie.genres} />
                   </div>
                   <p>{movie.overview}</p>
+                  {movie.runtime && <p>Duration: {movie.runtime} minutes</p>}
                   <p>
                     Release Date:{" "}
                     {new Date(movie.release_date).toLocaleDateString()}
@@ -89,19 +92,32 @@ const Movie = ({ movie, theme, loading }) => {
                           href={`https://netnaija.xyz/${convertToSlug(
                             movie.title
                           )}`}
+                          className="btn btn-success w-100 m-1"
+                          target="_blank"
+                        >
+                          <FontAwesomeIcon icon={faDownload} /> NETNAIJA
+                        </a>
+                      </div>
+                      <div className="col">
+                        <a
+                          href={`https://nkiri.com/${convertToSlug(
+                            movie.title
+                          )}`}
+                          className="btn btn-light w-100 m-1"
+                          target="_blank"
+                        >
+                          <FontAwesomeIcon icon={faDownload} /> NKIRI
+                        </a>
+                      </div>
+                    </div>
+                    <div className="row">
+                    {movie.homepage && (<div className="col">
+                        <a
+                          href={movie.homepage}
                           className="btn btn-danger w-100 m-1"
                           target="_blank"
                         >
-                          DOWNLOAD
-                        </a>
-                      </div>
-                      {movie.homepage && (<div className="col">
-                        <a
-                          href={movie.homepage}
-                          className="btn btn-info w-100 m-1"
-                          target="_blank"
-                        >
-                          MOVIE SITE
+                          <FontAwesomeIcon icon={faFilm} /> MOVIE SITE
                         </a>
                       </div>)}
                       {movie.imdb_id && (<div className="col">

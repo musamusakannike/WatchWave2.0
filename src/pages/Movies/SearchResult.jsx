@@ -1,12 +1,12 @@
 import { useState, useRef, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import { TMDB_API_KEY } from "../config";
-import { ThemeContext } from "../ThemeContext.jsx";
+import { TMDB_API_KEY } from "../../config.js";
+import { ThemeContext } from "../../ThemeContext.jsx";
 import "react-toastify/dist/ReactToastify.css";
 import "react-step-progress-bar/styles.css";
-import MoviesGrid from "../components/MoviesGrid.jsx";
-import SearchBar from "../components/SearchBar.jsx";
+import MoviesGrid from "../../components/Movies/MoviesGrid.jsx";
+import SearchBar from "../../components/Movies/MovieSearchBar.jsx";
 
 const SearchResult = () => {
   const { theme } = useContext(ThemeContext);

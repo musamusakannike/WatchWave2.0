@@ -1,41 +1,19 @@
 import { ThemeContext } from "../ThemeContext.jsx";
 import { useContext } from "react";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faHome,
-  faListAlt,
-  faHeart,
-  faStar,
-  faBell,
-  faHeadset,
-  faBars,
-  faTimes,
-} from "@fortawesome/free-solid-svg-icons";
+import { faHome,faListAlt,faHeart,faStar,faBell,faHeadset,faBars,faTimes, faTv } from "@fortawesome/free-solid-svg-icons";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "animate.css/animate.min.css";
 import { Link } from "react-router-dom";
+import navlinks from "../data/navlinks.js";
 
-const icons = {
-  faHome,
-  faListAlt,
-  faHeart,
-  faStar,
-  faBell,
-  faHeadset,
-};
+const icons = { faHome, faListAlt, faHeart, faStar, faBell, faHeadset, faTv };
 
 const Navbar = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
   const [isSidebarVisible, setSidebarVisible] = useState(false);
-  const [navLinks, setNavLinks] = useState([]);
-
-  useEffect(() => {
-    fetch("/data/navLinks.json")
-      .then((response) => response.json())
-      .then((data) => setNavLinks(data))
-      .catch((error) => console.error("Error fetching nav links:", error));
-  }, []);
+  const navLinks = navlinks
 
   const toggleSidebar = () => {
     setSidebarVisible(!isSidebarVisible);

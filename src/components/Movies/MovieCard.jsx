@@ -1,44 +1,44 @@
 import { useContext, useState, useEffect } from "react";
 import Tilt from "react-parallax-tilt";
 import { Link } from "react-router-dom";
-import { ThemeContext } from "../ThemeContext.jsx";
+import { ThemeContext } from "../../ThemeContext.jsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
-// Utility functions for managing favourites in local storage
-const addFavorite = (movieId) => {
-  const favourites = JSON.parse(localStorage.getItem("favourites")) || [];
+// Utility functions for managing favourite movies in local storage
+const addFavoriteMovie = (movieId) => {
+  const favourites = JSON.parse(localStorage.getItem("favoriteMovies")) || [];
   if (!favourites.includes(movieId)) {
     favourites.push(movieId);
-    localStorage.setItem("favourites", JSON.stringify(favourites));
+    localStorage.setItem("favoriteMovies", JSON.stringify(favourites));
   }
 };
 
-const removeFavorite = (movieId) => {
-  const favourites = JSON.parse(localStorage.getItem("favourites")) || [];
+const removeFavoriteMovie = (movieId) => {
+  const favourites = JSON.parse(localStorage.getItem("favoriteMovies")) || [];
   const newfavourites = favourites.filter((id) => id !== movieId);
-  localStorage.setItem("favourites", JSON.stringify(newfavourites));
+  localStorage.setItem("favoriteMovies", JSON.stringify(newfavourites));
 };
 
-const isFavorite = (movieId) => {
-  const favourites = JSON.parse(localStorage.getItem("favourites")) || [];
+const isFavoriteMovie = (movieId) => {
+  const favourites = JSON.parse(localStorage.getItem("favoriteMovies")) || [];
   return favourites.includes(movieId);
 };
 
 const MovieCard = ({ movie }) => {
   const { theme } = useContext(ThemeContext);
-  const [isFav, setIsFav] = useState(isFavorite(movie.id));
+  const [isFav, setIsFav] = useState(isFavoriteMovie(movie.id));
 
   useEffect(() => {
-    setIsFav(isFavorite(movie.id));
+    setIsFav(isFavoriteMovie(movie.id));
   }, [movie.id]);
 
   const handleFavoriteClick = (e) => {
     e.preventDefault(); // Prevent the Link from navigating
     if (isFav) {
-      removeFavorite(movie.id);
+      removeFavoriteMovie(movie.id);
     } else {
-      addFavorite(movie.id);
+      addFavoriteMovie(movie.id);
     }
     setIsFav(!isFav);
   };
