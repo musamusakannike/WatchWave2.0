@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, useContext } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { TMDB_API_KEY } from "../../config.js";
 import { ThemeContext } from "../../ThemeContext.jsx";
@@ -53,6 +53,11 @@ const SearchResult = () => {
             Search Results
           </h4>
           <MoviesGrid movieList={moviesList} />
+        </div>
+      )}
+      {moviesList.length < 3 && (
+        <div className="text-center">
+          <h5>Perhaps you're searching for a <Link to={`/series-search/${searchTitle}`}>TV Series</Link></h5>
         </div>
       )}
     </div>
