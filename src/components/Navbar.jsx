@@ -32,7 +32,7 @@ const Navbar = () => {
             className={`d-flex align-items-center mb-3 mb-md-0 me-md-auto link-${theme} text-decoration-none`}
           >
             <img
-              src="assets/images/logo.png"
+              src="/assets/images/logo.png"
               alt="WatchWave logo"
               style={{ width: "30px", height: "30px" }}
             />
@@ -91,7 +91,7 @@ const Navbar = () => {
           data-bs-placement="right"
         >
           <img
-            src="assets/images/logo.png"
+            src="/assets/images/logo.png"
             alt="WatchWave logo"
             style={{ width: "30px", height: "30px" }}
           />

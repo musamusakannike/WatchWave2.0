@@ -3,6 +3,7 @@ import Loader from "../Loader";
 import { ProgressBar } from "react-step-progress-bar";
 import { ToastContainer } from "react-toastify";
 import Backdrop from "../Backdrop";
+import Tilt from "react-parallax-tilt";
 
 const Serie = ({ serie, theme, loading }) => {
   function convertToSlug(str) {
@@ -38,16 +39,26 @@ const Serie = ({ serie, theme, loading }) => {
             >
               <div className="row mx-auto p-2">
                 <div className="col-md-4 text-center">
-                  <img
-                    src={
-                      serie.poster_path
-                        ? `https://image.tmdb.org/t/p/w500${serie.poster_path}`
-                        : "/assets/images/dummy.png"
-                    }
-                    alt={serie.name}
-                    className="rounded-0 mx-auto"
-                    loading="lazy"
-                  />
+                  <div className="overflow-hidden">
+                    <Tilt
+                      className="tilt-card"
+                      tiltMaxAngleX={25}
+                      tiltMaxAngleY={25}
+                      scale={1.1}
+                      transitionSpeed={2500}
+                    >
+                      <img
+                        src={
+                          serie.poster_path
+                            ? `https://image.tmdb.org/t/p/w500${serie.poster_path}`
+                            : "/assets/images/dummy.png"
+                        }
+                        alt={serie.name}
+                        className="rounded-0 mx-auto"
+                        loading="lazy"
+                      />
+                    </Tilt>
+                  </div>
                 </div>
                 <div
                   className={`col-md-8 p-0 p-md-2 text-${
@@ -78,21 +89,19 @@ const Serie = ({ serie, theme, loading }) => {
                         Last Air Date:{" "}
                         {new Date(serie.last_air_date).toLocaleDateString()}
                       </p>
-                      <p>
-                        Status:{" "}
-                        {(serie.status)}
-                      </p>
+                      <p>Status: {serie.status}</p>
                     </div>
                     <div className="col-6">
-                      <p>
-                        Number of Seasons: {serie.number_of_seasons}
-                      </p>
-                      <p>
-                        Number of Episodes: {serie.number_of_episodes}
-                      </p>
+                      <p>Number of Seasons: {serie.number_of_seasons}</p>
+                      <p>Number of Episodes: {serie.number_of_episodes}</p>
                     </div>
                   </div>
-                  {serie.next_episode_to_air && <p className="text-center">Next Episode:{new Date(serie.next_episode_to_air).toLocaleDateString()}</p>}
+                  {serie.next_episode_to_air && (
+                    <p className="text-center">
+                      Next Episode:
+                      {new Date(serie.next_episode_to_air).toLocaleDateString()}
+                    </p>
+                  )}
                   <div>
                     <p className="d-inline-block">
                       Rating: {serie.vote_average}/10

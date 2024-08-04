@@ -5,6 +5,7 @@ import { ToastContainer } from "react-toastify";
 import Backdrop from "../Backdrop";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDownload, faFilm } from "@fortawesome/free-solid-svg-icons";
+import Tilt from "react-parallax-tilt";
 
 const Movie = ({ movie, theme, loading }) => {
   function convertToSlug(str) {
@@ -40,12 +41,26 @@ const Movie = ({ movie, theme, loading }) => {
             >
               <div className="row mx-auto p-2">
                 <div className="col-md-4 text-center">
-                  <img
-                    src={movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : "/assets/images/dummy.png"}
-                    alt={movie.title}
-                    className="rounded-0 mx-auto"
-                    loading="lazy"
-                  />
+                  <div className="overflow-hidden">
+                    <Tilt
+                      className="tilt-card"
+                      tiltMaxAngleX={25}
+                      tiltMaxAngleY={25}
+                      scale={1.1}
+                      transitionSpeed={2500}
+                    >
+                      <img
+                        src={
+                          movie.poster_path
+                            ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+                            : "/assets/images/dummy.png"
+                        }
+                        alt={movie.title}
+                        className="rounded-0 mx-auto"
+                        loading="lazy"
+                      />
+                    </Tilt>
+                  </div>
                 </div>
                 <div
                   className={`col-md-8 p-0 p-md-2 text-${
@@ -53,16 +68,38 @@ const Movie = ({ movie, theme, loading }) => {
                   }`}
                 >
                   <h1>{movie.title}</h1>
-                  <i><small className={`text-${theme === "light" ? "muted" : "light"}`}>{movie.tagline && movie.tagline}</small></i>
+                  <i>
+                    <small
+                      className={`text-${
+                        theme === "light" ? "muted" : "light"
+                      }`}
+                    >
+                      {movie.tagline && movie.tagline}
+                    </small>
+                  </i>
                   <div className="border-1 p-1">
                     <Genres genres={movie.genres} />
                   </div>
                   <p>{movie.overview}</p>
-                  {movie.runtime && <p>Duration: {movie.runtime} minutes</p>}
-                  <p>
-                    Release Date:{" "}
-                    {new Date(movie.release_date).toLocaleDateString()}
-                  </p>
+                  <div className="row">
+                    <div className="col-6">
+                      {movie.runtime && (
+                        <p>Duration: {movie.runtime} minutes</p>
+                      )}
+                      <p>
+                        Release Date:{" "}
+                        {new Date(movie.release_date).toLocaleDateString()}
+                      </p>
+                    </div>
+                    <div className="col-6">
+                      {movie.budget && (
+                        <p>Budget: ${movie.budget.toLocaleString()}</p>
+                      )}
+                      {movie.revenue && (
+                        <p>Revenue: ${movie.revenue.toLocaleString()}</p>
+                      )}
+                    </div>
+                  </div>
                   <div>
                     <p className="d-inline-block">
                       Rating: {movie.vote_average}/10
@@ -111,24 +148,28 @@ const Movie = ({ movie, theme, loading }) => {
                       </div>
                     </div>
                     <div className="row">
-                    {movie.homepage && (<div className="col">
-                        <a
-                          href={movie.homepage}
-                          className="btn btn-danger w-100 m-1"
-                          target="_blank"
-                        >
-                          <FontAwesomeIcon icon={faFilm} /> MOVIE SITE
-                        </a>
-                      </div>)}
-                      {movie.imdb_id && (<div className="col">
-                        <a
-                          href={`https://www.imdb.com/title/${movie.imdb_id}`}
-                          className="btn btn-warning w-100 m-1"
-                          target="_blank"
-                        >
-                          IMDB
-                        </a>
-                      </div>)}
+                      {movie.homepage && (
+                        <div className="col">
+                          <a
+                            href={movie.homepage}
+                            className="btn btn-danger w-100 m-1"
+                            target="_blank"
+                          >
+                            <FontAwesomeIcon icon={faFilm} /> MOVIE SITE
+                          </a>
+                        </div>
+                      )}
+                      {movie.imdb_id && (
+                        <div className="col">
+                          <a
+                            href={`https://www.imdb.com/title/${movie.imdb_id}`}
+                            className="btn btn-warning w-100 m-1"
+                            target="_blank"
+                          >
+                            IMDB
+                          </a>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
